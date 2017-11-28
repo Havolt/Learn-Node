@@ -1,8 +1,21 @@
 const http = require('http');
 const timer = require('./getMyTime.js');
+const port = 8080;
+const serverUrl = 'localhost';
 
-http.createServer(function(req,res){
+let server = http.createServer(function(req,res){
   res.writeHead(200, {'Content-Type' : 'text/html'});
-  res.write('Current time is: ' + timer.getMyTime());
+
+  console.log('Request:' + req.url);
+
+  let time = new Date();
+
+  let content = '<p> Current time is: ' + time +'.</p>';
+
+
+  res.write(content);
   res.end()
-}).listen(8080);
+})
+
+console.log("Listening at " + serverUrl + ':' + port);
+server.listen(port, serverUrl);
