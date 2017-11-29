@@ -1,8 +1,14 @@
 const http = require('http');
-const movies = require('./movies')
+const movies = require('./movies');
+require('./emily');
+require('./bucky');
 
 http.createServer(function(req, res){
+  /*
+  movies.printAvatar();
+  console.log(movies.favMovie);
+  */
 
-  movies.avatar();
+
 
 }).listen(8888);
