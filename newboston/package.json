@@ -1,14 +1,17 @@
 {
   "name": "newboston",
-  "version": "1.0.0",
-  "description": "Learning Node",
-  "main": "app.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "author": "Mark Fitzpatrick",
-  "license": "ISC",
   "dependencies": {
-    "connect": "^3.6.5"
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "express": "~4.15.5",
+    "morgan": "~1.9.0",
+    "serve-favicon": "~2.4.5"
   }
 }
