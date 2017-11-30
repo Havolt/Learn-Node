@@ -12,10 +12,12 @@
     <p>Welcome to the circus of value</p>
     <p>My name is <%= myName %> </p>
 
+    <h3><%= videodata.categoryName %></h3>
+
     <ul>
-      <% for(var i = 0; i < 5; i++){ %>
-        <li>Turkey</li>
-        <% } %>
-      </ul>
+      <% videodata.categories.forEach(function(item){ %>
+        <li><%= item.categoryName %></li>
+      <% }); %>
+    </ul>
   </body>
 </html>
