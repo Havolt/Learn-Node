@@ -16,7 +16,7 @@
 
     <ul>
       <% videodata.categories.forEach(function(item){ %>
-        <li><%= item.categoryName %></li>
+        <a href="http://thenewboston.com/videos_food.php?cat=<%= item.categoryID %>" ><li><%= item.categoryName %></li></a>
       <% }); %>
     </ul>
   </body>
