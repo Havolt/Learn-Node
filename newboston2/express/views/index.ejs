@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>The Dullahan</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>I am Mark's first proper express</p>
+    
+    <p><%= name %></p>
+
+    <ul>
+      <% for(let i = 0; i < 5; i++){ %>
+        <li>Trigun</li>
+      <% } %>
+    </ul>
+
   </body>
 </html>
