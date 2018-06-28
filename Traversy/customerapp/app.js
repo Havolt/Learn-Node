@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const expressValidator = require('express-validator');
 
 let app = express();
 
@@ -32,6 +33,15 @@ let people = [
 ];
 */
 
+//Global Vars
+app.use((req,res,next)=>{
+    res.locals.errors = null;
+    next();
+})
+
+// express validator middleware
+app.use(expressValidator()); 
+
 let users = [
     {id: 1, firstname: 'Dave', lastname: 'Brown', email: 'db@gmail.com'},
     {id: 1, firstname: 'Peter', lastname: 'Griffin', email: 'familyguy@gmail.com'},
@@ -44,6 +54,32 @@ app.get('/', (req, res) => {
         users: users
     });
 });
+
+app.post('/users/add', function(req, res){
+
+    req.checkBody('firstname', 'Firstname is required').notEmpty();
+    req.checkBody('lastname', 'Lastname is required').notEmpty();
+    req.checkBody('email', 'Email is required').notEmpty();
+
+    let errors = req.validationErrors();
+
+    if(errors){
+        console.log('ERRORS');
+        res.render('index', {
+            title: 'Customers',
+            users: users,
+            errors: errors
+        });
+    }else{
+        let newUser = {
+            firstname : req.body.firstname,
+            lastname : req.body.lastname,
+            email : req.body.email
+        }
+        console.log('SUCCESS');
+    }
+
+})
 
 app.listen(3000, () =>{
     console.log('Server started on port 3000...');
