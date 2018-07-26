@@ -14,7 +14,7 @@
                 <div id="chatMain"></div>
         </div>
         <div id="msgContain">
-            <input type="text" id="msgInput">
+            <textarea name="msgInp" id="msgInput"></textarea>
             <button id="msgSend">Send</button>
         </div>
     </div>
@@ -53,6 +53,10 @@
             socket.emit('message', {msg: userMsg});
 
             document.querySelector('#msgInput').value = '';
+        })
+
+        document.querySelector('#chatMain').addEventListener('scroll', (evt) => {
+            console.log(evt);
         })
       
     </script>
