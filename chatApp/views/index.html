@@ -5,29 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Live chat application</title>
+    <link rel="stylesheet" href="/stylesheets/index.css">
 </head>
 <body>
 
-    <div>Testing bruh</div>
-    <div>
+    <div id="msgContain">
         <input type="text" id="msgInput">
         <button id="msgSend">Send Message</button>
+    </div>
+
+    <div id="chatContain">
+        <div id="chatMain"></div>
     </div>
 
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      var socket = io.connect('http://localhost:3000');
-      socket.on('news', function (data) {
+        var socket = io.connect('http://localhost:3000');
+        socket.on('news', function (data) {
         console.log(data);
         socket.emit('my other event', { my: 'data' });
-      });
+        });
 
-      document.querySelector('#msgSend').addEventListener('click', () => {
-          const userMsg = document.querySelector('#msgInput').value;
-          console.log(userMsg);
-          socket.emit('message', {msg: userMsg});
-      })
+        socket.on('message', (data) => {
+                document.querySelector('#chatMain').innerHTML += '<br>' + data.msg;
+        })
+
+        document.querySelector('#msgSend').addEventListener('click', () => {
+            const userMsg = document.querySelector('#msgInput').value;
+            console.log(userMsg);
+            socket.emit('message', {msg: userMsg});
+
+            document.querySelector('#msgInput').value = '';
+        })
       
     </script>
 

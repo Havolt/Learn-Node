@@ -1,0 +1,20 @@
+
+#msgInput{
+    font-size: 1.5em;
+    padding-left: 4px;
+}
+
+#msgSend{
+    font-size: 1.5em;
+    background: rgb(53, 138, 167);
+    border: 2px solid rgb(53, 138, 167);
+    color: white;
+    border-radius: 2px;
+    user-select: none;
+}
+
+#msgSend:hover{
+    cursor: pointer;
+    background: rgb(85, 158, 182);
+    border: 2px solid rgb(85, 158, 182);
+}
