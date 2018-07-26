@@ -1,4 +1,30 @@
 
+#appContain{
+    border: 1px solid rgb(101, 146, 161);
+    width: fit-content;
+    padding: 8px 4px 8px 4px;
+    border-radius: 2px;
+}
+
+#chatContain{
+    min-height: 400px;
+}
+
+#chatMain{
+    height: 380px;
+    overflow-y: scroll;
+    transform:rotate(180deg);
+    direction: rtl;
+}
+
+.chatMsg{
+    transform:rotate(180deg);
+    direction: rtl;
+    text-align: left;
+    width: 100%;
+}
+
+
 #msgInput{
     font-size: 1.5em;
     padding-left: 4px;

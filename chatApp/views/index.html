@@ -9,26 +9,42 @@
 </head>
 <body>
 
-    <div id="msgContain">
-        <input type="text" id="msgInput">
-        <button id="msgSend">Send Message</button>
-    </div>
-
-    <div id="chatContain">
-        <div id="chatMain"></div>
+    <div id="appContain">
+        <div id="chatContain">
+                <div id="chatMain"></div>
+        </div>
+        <div id="msgContain">
+            <input type="text" id="msgInput">
+            <button id="msgSend">Send</button>
+        </div>
     </div>
 
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
         var socket = io.connect('http://localhost:3000');
+
+        let chatData = [];
+
+        function writeChat(data){
+            let currMsg = chatData[chatData.length -1].msg;
+            const newEl = document.createElement('div');
+            newEl.classList.add('chatMsg');
+            const newElMsg = document.createElement('div');
+            newElMsg.innerHTML = currMsg;
+            newEl.appendChild(newElMsg);
+            document.querySelector('#chatMain').appendChild(newEl);
+        }
+
         socket.on('news', function (data) {
         console.log(data);
         socket.emit('my other event', { my: 'data' });
         });
 
         socket.on('message', (data) => {
-                document.querySelector('#chatMain').innerHTML += '<br>' + data.msg;
+            chatData.push(data);
+            //document.querySelector('#chatMain').innerHTML += '<br>' + data.msg;
+            writeChat(chatData);
         })
 
         document.querySelector('#msgSend').addEventListener('click', () => {
