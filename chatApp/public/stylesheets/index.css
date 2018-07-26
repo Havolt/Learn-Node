@@ -1,6 +1,7 @@
 
 body{
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #appContain{
@@ -25,6 +26,7 @@ body{
 .chatMsg{
     padding: 2px 5px;
     width: 350px;
+    font-size: 1.1em;
 }
 
 #msgContain{
@@ -55,10 +57,66 @@ body{
     border-top-right-radius: 2px;
     user-select: none;
     height: 100%;
+    padding: 0 18px;
 }
 
 #msgSend:hover{
     cursor: pointer;
     background: rgb(85, 158, 182);
     border: 2px solid rgb(85, 158, 182);
+}
+
+#hAll{
+    width: 100vw;
+    height: 100vh;
+    background: rgba(200, 200, 200, 0.8);
+    position: fixed;
+    z-index: 100;
+}
+
+#nameContain {
+    border-radius: 4px;
+    width: 50%;
+    height: 20%;
+    max-height: 200px;
+    min-width: 300px;
+    background: white;
+    margin: 20vh auto;
+}
+
+#nameHeading {
+    font-size: 1.8em;
+    text-align: center;
+    padding: 20px 0;
+    color: rgb(53, 138, 167);
+}
+
+#nameInputsContain {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+}
+
+#nameInput {
+    font-size: 1.2em;
+    width: 90%;
+    border: 1px solid lightgrey;
+    padding-left: 4px;
+}
+
+#nameInput:focus {
+    outline: none;
+}
+
+#nameButton {
+    padding: 0 10px;
+    font-size: 1.8em;
+    background: white;
+    border: 1px solid lightgrey;
+    border-left: none;
+}
+
+#nameButton:hover {
+    cursor: pointer;
+    background: #eeeeee;
 }
