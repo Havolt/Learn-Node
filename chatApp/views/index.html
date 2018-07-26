@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Live chat application</title>
+</head>
+<body>
+
+    <div>Testing bruh</div>
+    <div>
+        <input type="text" id="msgInput">
+        <button id="msgSend">Send Message</button>
+    </div>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io.connect('http://localhost:3000');
+      socket.on('news', function (data) {
+        console.log(data);
+        socket.emit('my other event', { my: 'data' });
+      });
+
+      document.querySelector('#msgSend').addEventListener('click', () => {
+          const userMsg = document.querySelector('#msgInput').value;
+          console.log(userMsg);
+          socket.emit('message', {msg: userMsg});
+      })
+      
+    </script>
+
+</body>
+</html>

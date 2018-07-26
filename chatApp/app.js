@@ -1,21 +1,22 @@
-const express = require('express');
-const app = express();
+var app = require('express')();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 const port = 3000;
 
-
-app.set('view engine', 'ejs');
-
-app.use(express.static('public'));
-
-app.get('/', (req, res) => {
-    res.send('Hello world');
+server.listen(port, () => {
+    console.log(`Server is listening on port: ${port}`);
 });
 
-server = app.listen(port, () => console.log(`Listening on port ${port}`))
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/views/index.html');
+});
 
-const io = require('socket.io')(server);
-
-io.on('connection', () => {
-    console.log('New user connected');
-})
-
+io.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+  socket.on('message', (data) => {
+      console.log(data);
+  })
+});
