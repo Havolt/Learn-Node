@@ -78,8 +78,8 @@ body{
     border-radius: 4px;
     width: 50%;
     height: 20%;
-    max-height: 200px;
-    min-width: 300px;
+    min-height: 160px;
+    min-width: 360px;
     background: white;
     margin: 20vh auto;
 }
@@ -94,7 +94,7 @@ body{
 #nameInputsContain {
     margin: 0 auto;
     width: 80%;
-    display: flex;
+    
 }
 
 #nameInput {
@@ -116,7 +116,23 @@ body{
     border-left: none;
 }
 
+#nameInAll {
+    position: relative;
+    display: flex;
+}
+
 #nameButton:hover {
     cursor: pointer;
     background: #eeeeee;
+}
+
+#nameWarning {
+    position: absolute;
+    top: 40px;
+    left: 4px;
+    color: rgb(201, 27, 27);
+}
+
+.hidden {
+    display: none;
 }

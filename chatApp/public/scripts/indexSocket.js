@@ -21,6 +21,20 @@ function sendMsg(){
     document.querySelector('#msgInput').value = '';
 }
 
+function nameCheck(uName) {
+    console.log(uName.value.length);
+
+    if(uName.value.length < 3) {
+        console.log('here');
+        document.querySelector('#nameWarning').innerHTML = 'Must be longer than 3 characters.';
+        console.log('now here');
+    }
+    else {
+
+    }
+
+}
+
 socket.on('news', function (data) {
 console.log(data);
 socket.emit('my other event', { my: 'data' });
@@ -42,7 +56,9 @@ document.querySelector('#msgInput').addEventListener('keydown', (e) => {
     }
 });
 
-
-document.querySelector('#chatMain').addEventListener('scroll', (evt) => {
-    console.log(evt);
+document.querySelector('#nameInput').addEventListener('keydown', (e) => {
+    e.keyCode == 13 ? nameCheck(document.querySelector('#nameInput')) : '';
+});
+document.querySelector('#nameButton').addEventListener('click', () => {
+    nameCheck(document.querySelector('#nameInput'));
 })
