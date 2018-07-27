@@ -4,6 +4,9 @@ let chatData = [];
 let userData = {
     name: ''
 }
+const staticData = {
+    nameRegex: /^[a-zA-Z0-9]+([_-]?[a-zA-Z0-9])*$/g
+}
 
 function writeChat(data){
     let currMsg = chatData[chatData.length -1].msg;
@@ -25,12 +28,11 @@ function nameCheck(uName) {
     console.log(uName.value.length);
 
     if(uName.value.length < 3) {
-        console.log('here');
         document.querySelector('#nameWarning').innerHTML = 'Must be longer than 3 characters.';
-        console.log('now here');
     }
-    else {
-
+    else if(uName.value.match(staticData.nameRegex)) {
+        userData.name = uName.value;
+        document.querySelector('#hAll').classList.add('hideEl');
     }
 
 }

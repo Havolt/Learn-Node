@@ -133,6 +133,6 @@ body{
     color: rgb(201, 27, 27);
 }
 
-.hidden {
+.hideEl {
     display: none;
 }
