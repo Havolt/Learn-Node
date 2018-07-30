@@ -121,7 +121,7 @@ body{
     display: flex;
 }
 
-#nameButton:hover {
+#nameButton:hover, #nameButton:focus {
     cursor: pointer;
     background: #eeeeee;
 }
@@ -131,7 +131,23 @@ body{
     top: 40px;
     left: 4px;
     color: rgb(201, 27, 27);
+    font-size: 0.8em;
 }
+
+#nameWarning::before {
+    content: "*"
+ }
+
+ @keyframes shaker {
+    25%  {transform: translate(5%, 0)}
+    75%  {transform: translate(-5%, 0)}
+    100% {transform: translate(0, 0)}
+ }
+
+ .shakeEl {
+    animation: shaker 0.5s;
+    outline: 1px solid red;
+ }
 
 .hideEl {
     display: none;

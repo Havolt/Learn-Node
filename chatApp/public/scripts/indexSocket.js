@@ -19,9 +19,16 @@ function writeChat(data){
 }
 
 function sendMsg(){
+    if(!userData.name){
+        document.querySelector('#msgInput').value ='';
+        document.querySelector('#msgInput').placeholder = 'No username found..';
+        return;
+    }
     const userMsg = document.querySelector('#msgInput').value;
-    socket.emit('message', {msg: userMsg});
-    document.querySelector('#msgInput').value = '';
+    if(userMsg.length > 0){
+        socket.emit('message', {msg: userMsg});
+        document.querySelector('#msgInput').value = '';
+    }
 }
 
 function nameCheck(uName) {
@@ -34,6 +41,16 @@ function nameCheck(uName) {
         userData.name = uName.value;
         document.querySelector('#hAll').classList.add('hideEl');
     }
+    else {
+        document.querySelector('#nameWarning').innerHTML = 'Please use only letters, numbers, dashes and underscores';
+    }
+    document.querySelector('#nameWarning').classList.remove('hideEl');
+    if(document.querySelector('#nameInAll').classList.length < 1){
+        document.querySelector('#nameInAll').classList.add('shakeEl');
+    }
+    setTimeout(()=>{
+        document.querySelector('#nameInAll').classList.remove('shakeEl');
+    }, 500)
 
 }
 
@@ -63,4 +80,11 @@ document.querySelector('#nameInput').addEventListener('keydown', (e) => {
 });
 document.querySelector('#nameButton').addEventListener('click', () => {
     nameCheck(document.querySelector('#nameInput'));
-})
+});
+document.querySelector('#nameInput').addEventListener('input', (e) => {
+    console.log(document.querySelector('#nameWarning').classList.length);
+    if(document.querySelector('#nameWarning').classList.length < 1){
+        console.log(document.querySelector('#nameWarning').classList.length)
+        document.querySelector('#nameWarning').classList.add('hideEl');
+    }
+});
