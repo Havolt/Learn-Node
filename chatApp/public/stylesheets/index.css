@@ -16,7 +16,7 @@ body{
 #topMenu {
     border-bottom: 2px solid rgb(173, 170, 170);
     width: 100%;
-    margin-bottom: 20px;
+    height: 5%;
 }
 
 #topLogo {
@@ -31,8 +31,7 @@ body{
     float: right;
     position: relative;
     display: inline-block;
-    vertical-align: center;
-    top: 8px;
+    line-height: 39px;
     color: rgb(146, 146, 146);
     padding-right: 2%;
 }
@@ -40,7 +39,7 @@ body{
 #chatContain{
     width: 100%;
     display: table;
-    height: 85%;
+    height: 78%;
 }
 
 #chatMain{
@@ -82,7 +81,10 @@ body{
 
 
 #msgContain{
-    width: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 96%;
     height: 15%;
     display: flex;
     position: absolute;
@@ -105,8 +107,6 @@ body{
     background: rgb(53, 138, 167);
     border: 2px solid rgb(53, 138, 167);
     color: white;
-    border-bottom-right-radius: 2px;
-    border-top-right-radius: 2px;
     user-select: none;
     height: 100%;
     padding: 0 18px;

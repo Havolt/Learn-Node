@@ -25,6 +25,7 @@ function writeChat(data){
         newElMsg.classList.add('myMessageB');
     }
     document.querySelector('#chatMain').appendChild(newEl);
+    document.querySelector('#chatMain').scrollTop =  document.querySelector('#chatMain').scrollHeight;
 }
 
 function sendMsg(){
