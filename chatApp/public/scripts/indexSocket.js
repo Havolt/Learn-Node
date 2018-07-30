@@ -49,6 +49,7 @@ function nameCheck(uName) {
     else if(uName.value.match(staticData.nameRegex)) {
         userData.name = uName.value;
         document.querySelector('#hAll').classList.add('hideEl');
+        document.querySelector('#topUserName').innerHTML = userData.name;
     }
     else {
         document.querySelector('#nameWarning').innerHTML = 'Please use only letters, numbers, dashes and underscores';
