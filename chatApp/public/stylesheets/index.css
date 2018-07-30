@@ -21,13 +21,39 @@ body{
     height: 100%;
     overflow-y: auto;
     width: 100%;
+
 }
 
 .chatMsg{
-    padding: 2px 5px;
-    width: 350px;
+    width: 100%;
     font-size: 1.1em;
 }
+
+.chatMsg > div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.chatUser {
+    overflow-x: hidden;
+    text-align: right;
+    color: #2244CC;
+    width: 14%;
+}
+
+.chatText::before {
+    content: ':';
+    display: inline-block;
+    padding-right: 1%;
+    color: #2244CC;
+}
+
+.chatText {
+    width: 85%;
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
 
 #msgContain{
     width: 100%;
@@ -136,6 +162,14 @@ body{
 
 #nameWarning::before {
     content: "*"
+ }
+
+ .myMessage {
+     color: green;
+ }
+
+ .myMessageB::before{
+     color: green;
  }
 
  @keyframes shaker {

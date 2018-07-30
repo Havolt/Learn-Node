@@ -12,9 +12,18 @@ function writeChat(data){
     let currMsg = chatData[chatData.length -1].msg;
     const newEl = document.createElement('div');
     newEl.classList.add('chatMsg');
+    const newElUser = document.createElement('div');
+    newElUser.innerHTML = chatData[chatData.length -1].name;
+    newElUser.classList.add('chatUser');
+    newEl.appendChild(newElUser);
     const newElMsg = document.createElement('div');
     newElMsg.innerHTML = currMsg;
+    newElMsg.classList.add('chatText');
     newEl.appendChild(newElMsg);
+    if(newElUser.innerHTML == userData.name) {
+        newElUser.classList.add('myMessage');
+        newElMsg.classList.add('myMessageB');
+    }
     document.querySelector('#chatMain').appendChild(newEl);
 }
 
@@ -26,7 +35,7 @@ function sendMsg(){
     }
     const userMsg = document.querySelector('#msgInput').value;
     if(userMsg.length > 0){
-        socket.emit('message', {msg: userMsg});
+        socket.emit('message', {msg: userMsg, name: userData.name});
         document.querySelector('#msgInput').value = '';
     }
 }
