@@ -9,6 +9,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html');
@@ -17,7 +18,12 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
     console.log('stop calling me')
     console.log(req.body.favGame);
-    res.send('done');
+    res.send({test: 'working'});
+});
+
+app.post('/send', (req, res) => {
+    console.log('is this working?');
+    console.log(req.body);
 });
 
 app.listen(port, () => {
