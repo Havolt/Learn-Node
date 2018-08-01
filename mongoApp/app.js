@@ -22,8 +22,27 @@ app.post('/', (req, res) => {
 });
 
 app.post('/send', (req, res) => {
-    console.log('is this working?');
     console.log(req.body);
+    let mongoSuccess = false;
+
+    MongoClient.connect(urlM, (err, db) => {
+        if (err) throw err;
+        var dbo = db.db("mydb");
+        dbo.collection("customers").insertOne(req.body, () => {
+            if (err) throw err;
+            console.log('User document inserted');
+            db.close();
+            mongoSuccess = true;
+        })
+    });
+
+    if(mongoSuccess){
+        res.responseText = 'Thank you';
+    }else{
+        res.responseText = 'There was a problem';
+    }
+    res.send();
+
 });
 
 app.listen(port, () => {
