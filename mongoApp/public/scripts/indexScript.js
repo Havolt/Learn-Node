@@ -17,5 +17,10 @@ document.querySelector('#userInfo').addEventListener('click', () => {
         },
         body: JSON.stringify(newObj)
     })
-    .then(resp => console.log(resp.responseText));
+    .then((res) => {
+        return res.json();
+    })
+    .then((myJson) => {
+        console.log(myJson)
+    })
 });
