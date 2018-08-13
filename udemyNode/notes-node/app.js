@@ -1,10 +1,16 @@
-console.log('Starting app');
+console.log('Starting app.js');
 
 const fs = require('fs');
 const os = require('os');
-var user = os.userInfo();
+const notes = require('./notes.js');
+
+// var res = notes.addNote();
+// console.log(res);
 
 
-fs.appendFile('greetings.txt', `Hello ${user.username}!`, (err) => {
-    if(err) {console.log('An error has occured')}
-});
+console.log('Result:', notes.add(10, 55));
+
+// var user = os.userInfo();
+// fs.appendFile('greetings.txt', `Hello ${user.username} and you are ${notes.age}!`, (err) => {
+//     if(err) {console.log('An error has occured')}
+// });
