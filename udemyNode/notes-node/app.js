@@ -13,7 +13,14 @@ console.log('Command: ', command);
 console.log('Yargs', argv);
 
 if(command === 'add') {
-    notes.addNote(argv.title, argv.body);
+    let note = notes.addNote(argv.title, argv.body);
+    if(note) {
+        console.log('New note entered');
+        console.log(`Title: ${note.title}`);
+        console.log(`Body: ${note.body}`);
+    } else {
+        console.log('Duplicate note entered');
+    }
 } else if (command === 'list') {
     notes.getAll();
 } else if (command === 'read') {
@@ -23,3 +30,4 @@ if(command === 'add') {
 } else {
     console.log('command not recognized');
 }
+
