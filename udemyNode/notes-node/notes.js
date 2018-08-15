@@ -38,7 +38,9 @@ let getAll = () => {
 };
 
 let getNote = (title) => {
-    console.log(`Getting note ${title}` );
+    const notes = fetchNotes();
+    let matchingNote = notes.filter((note) => title == note.title);
+    return matchingNote[0];
 };
 
 let removeNote = (title) => {
@@ -47,15 +49,20 @@ let removeNote = (title) => {
     //filter notes and remove one with title of arg
     let filteredNotes = notes.filter((note) => note.title !== title);
     //save new notes array
-    console.log(filteredNotes);
     saveNotes(filteredNotes);
-
     return notes.length !== filteredNotes.length;
 };
+
+const logNote = (note) => {
+    console.log(`---`);
+    console.log(`Title: ${note.title}`);
+    console.log(`Body: ${note.body}`);
+} 
 
 module.exports = {
     addNote,
     getAll,
     getNote,
-    removeNote
+    removeNote,
+    logNote
 }
