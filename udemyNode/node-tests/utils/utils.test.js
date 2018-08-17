@@ -7,11 +7,25 @@ it('should add two numbers', () => {
     expect(res).toBe(44).toBeA('number');
 });
 
+it('should async add two numbers', (done) => {
+    utils.asyncAdd(4, 3, (sum) => {
+        expect(sum).toBe(7).toBeA('number');
+        done();
+    });
+})
+
 it('should square a number', () => {
     const res = utils.square(5);
 
     expect(res).toBe(25).toBeA('number');
 })
+
+it('should async square a number', (done) => {
+    utils.asyncSquare(5, (sum) => {
+        expect(sum).toBe(25).toBeA('number');
+        done();
+    });
+});
 
 it('should set first and last name', () => {
     const user = {
